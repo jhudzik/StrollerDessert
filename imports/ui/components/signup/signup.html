@@ -1,0 +1,22 @@
+<md-content layout>
+    <form name="$ctrl.signupForm" ng-submit="$ctrl.signup()">
+        <md-input-container>
+            <label>Username</label>
+            <input ng-model="$ctrl.credentials.username" required/>
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input ng-model="$ctrl.credentials.password" type="password"
+                required/>
+        </md-input-container>
+        <md-input-container>
+            <md-checkbox ng-model="$ctrl.credentials.isDessertMaker">
+                Dessert Maker?
+            </md-checkbox>
+        </md-input-container>
+        <md-button type="submit" ng-disabled="$ctrl.signupForm.$invalid">
+            Signup
+        </md-button>
+    </form>
+    <div ng-show="$ctrl.err">{{$ctrl.err}}</div>
+</md-content>
