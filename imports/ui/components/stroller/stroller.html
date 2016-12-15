@@ -2,12 +2,18 @@
     <md-toolbar>
         <div class="md-toolbar-tools dash-header">
             <h1>Welcome {{$ctrl.stroller.username}}!</h1>
+            <div layout layout-align="end center" flex>
+                <div ng-repeat="c in $ctrl.uiCfg | toArray | filter: {hidden: true}">
+                    <sd-show component-id="{{c._key}}"></sd-show>
+                </div>
+            </div>
         </div>
     </md-toolbar>
-    {{$ctrl.stroller}}
+    {{$ctrl}}
     <div layout layout-wrap flex>
         <div flex="35">
-            <sd-daily-progress steps="$ctrl.stroller.profile.steps.today">
+            <sd-daily-progress steps="$ctrl.stroller.profile.steps.today"
+                ng-if="!$ctrl.uiCfg.dailyProgress.hidden">
             </sd-daily-progress>
         </div>
     </div>

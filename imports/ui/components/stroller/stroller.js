@@ -8,12 +8,16 @@ import template from './stroller.html';
 import sdDailyProgress from './daily-progress/daily-progress.js';
 
 class StrollerController {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, sdLayoutService) {
         'ngInject';
         $reactive(this).attach($scope);
+
         this.helpers({
             stroller() {
                 return Meteor.user();
+            },
+            uiCfg() {
+                return sdLayoutService.getUICfg();
             }
         });
     }
