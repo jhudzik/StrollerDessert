@@ -1,4 +1,4 @@
-<md-content layout>
+<md-content layout layout-fill flex>
     <form name="$ctrl.signupForm" ng-submit="$ctrl.signup()">
         <md-input-container>
             <label>Username</label>
@@ -10,7 +10,7 @@
                 required/>
         </md-input-container>
         <md-input-container>
-            <md-checkbox ng-model="$ctrl.credentials.isDessertMaker">
+            <md-checkbox ng-model="$ctrl.isDessertMaker">
                 Dessert Maker?
             </md-checkbox>
         </md-input-container>

@@ -1,0 +1,14 @@
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools dash-header">
+            <h1>Welcome {{$ctrl.stroller.username}}!</h1>
+        </div>
+    </md-toolbar>
+    {{$ctrl.stroller}}
+    <div layout layout-wrap flex>
+        <div flex="35">
+            <sd-daily-progress steps="$ctrl.stroller.profile.steps.today">
+            </sd-daily-progress>
+        </div>
+    </div>
+</md-content>
