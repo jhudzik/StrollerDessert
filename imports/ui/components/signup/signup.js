@@ -5,6 +5,8 @@ import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 
 import { DessertMakers } from '../../../collections/dessert-makers';
+import { Strollers } from '../../../collections/strollers';
+
 import template from './signup.html'
 
 class SignupController {
@@ -22,18 +24,51 @@ class SignupController {
     }
 
     /**
+     * Demo Only. We need a bunch of integers.
+     */
+    generateInteger(max, min=0) {
+        return Math.floor(min + Math.random() * (max - min));
+    }
+
+    /**
      * Demo Only. Populate User Profile with Data
      */
-    buildProfile(type) {
-        var profile = {type};
+    buildProfile(type, username) {
+        var profile;
         switch(type) {
             case 'stroller':
-                let today = Math.floor(Math.random() * 100),
-                    total = Math.floor(Math.random() * today +
-                        Math.random() * 300);
+                profile = {type};
+                let today = this.generateInteger(100),
+                    total = this.generateInteger(300, today);
+                let goals = [
+                    {
+                        stepsNeeded: this.generateInteger(75, 15),
+                        dessert: {
+                            maker: "Jeff's Bakery",
+                            type: 'Apple Pie'
+                        }
+                    },
+                    {
+                        stepsNeeded: this.generateInteger(125, 55),
+                        dessert: {
+                            maker: "Adam's Bakery",
+                            type: 'Cheesecake'
+                        }
+                    }
+                ];
+                profile.goals = goals;
                 profile.steps = {today, total};
                 break;
             case 'dessertMaker':
+                profile = {
+                    name: username,
+                    dessert: {
+                        types: ['Cherry Pie', 'Baklava'],
+                        delivered: {
+                            total: Math.floor(Math.random() * 50)
+                        }
+                    }
+                };
                 break;
         }
         return profile;
@@ -46,15 +81,12 @@ class SignupController {
         Accounts.createUser(opts, (err) => {
             if(angular.isUndefined(err)) {
                 let redirectState;
-                // let redirectState = this.isDessertMaker ?
-                //     'sd.dessert-maker' : 'sd.stroller';
-                // this.$state.go(redirectState, {id: Meteor.userId()});
                 if(this.isDessertMaker) {
                     redirectState = 'sd.dessert-maker';
-                    // update dessert-makers collection
-                    // DessertMakers.collection.insert({})
+                    DessertMakers.insert(profile);
                 } else {
                     redirectState = 'sd.stroller';
+                    Strollers.insert(profile);
                 }
                 this.$state.go(redirectState, {id: Meteor.userId()});
             } else {

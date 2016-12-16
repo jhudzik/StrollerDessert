@@ -16,5 +16,16 @@
                 ng-if="!$ctrl.uiCfg.dailyProgress.hidden">
             </sd-daily-progress>
         </div>
+        <div flex>
+            <sd-goals goals="$ctrl.stroller.profile.goals"
+                steps-today="$ctrl.stroller.profile.steps.today"
+                ng-if="!$ctrl.uiCfg.goals.hidden"></sd-goals>
+        </div>
+        <div layout layout-align="end start" flex>
+            <div>
+                <sd-dessert-makers ng-if="!$ctrl.uiCfg.dessertMakers.hidden">
+                </sd-dessert-makers>
+            </div>
+        </div>
     </div>
 </md-content>
