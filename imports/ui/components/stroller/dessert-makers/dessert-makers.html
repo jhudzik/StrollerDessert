@@ -1,0 +1,25 @@
+<md-content class="dash-section">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Dessert Makers</h2>
+            <sd-hide component-id="dessertMakers"></sd-hide>
+        </div>
+    </md-toolbar>
+    <md-card ng-repeat="dm in $ctrl.list">
+        <md-card-title layout>
+            <md-card-title-text layout flex="35">
+                <md-subheader>
+                    {{dm.name}} : {{dm.dessert.delivered.total}} delivered
+                </md-subheader>
+            </md-card-title-text>
+            <md-card-content>
+                <md-subheader>
+                    Dessert Offerings:
+                    <span ng-repeat="d in dm.dessert.types">
+                        {{d}}<span ng-hide="$last">,</span>
+                    </span>
+                </md-subheader>
+            </md-card-content>
+        </md-card-title>
+    </md-card>
+</md-content>
