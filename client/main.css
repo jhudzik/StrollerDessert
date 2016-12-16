@@ -3,8 +3,33 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+sd-hide{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+sd-hide .material-icons {
+    font-size: 20px;
+}
+
 .dash-header {
     background-color: #333;
+}
+
+.dash-section, .dash-section .md-toolbar-tools {
+    position: relative;
+}
+
+.dash-section sd-hide {
+    transition: opacity ease-in 0.1s;
+    opacity: 0;
+}
+
+.dash-section:hover sd-hide {
+    transition: opacity ease-in 0.15s;
+    transition-delay: 0.5s;
+    opacity: 1;
 }
 
 .standout-text {

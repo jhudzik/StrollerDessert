@@ -1,0 +1,26 @@
+<md-content class="dash-section">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Goals</h2>
+            <sd-hide component-id="goals"></sd-hide>
+        </div>
+    </md-toolbar>
+    <md-card ng-repeat="g in $ctrl.goals">
+        <md-card-title layout>
+            <md-card-title-text>
+                    <md-subheader>
+                        {{g.dessert.maker}} - {{g.dessert.type}}
+                    </md-subheader>
+                    <md-subheader style="margin-top:10px;">
+                        <div layout>
+                            <div>Steps Needed: {{g.stepsNeeded}}</div>
+                            <div ng-if="g.stepsNeeded <= $ctrl.stepsToday" flex
+                                flex-offset="5">
+                                <md-icon>checked</md-icon> Completed!
+                            </div>
+                        </div>
+                    </md-subheader>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+</md-content>

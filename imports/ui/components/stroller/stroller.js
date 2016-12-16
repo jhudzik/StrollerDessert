@@ -6,14 +6,20 @@ import template from './stroller.html';
 
 // stroller components
 import sdDailyProgress from './daily-progress/daily-progress.js';
+import sdDessertMakers from './dessert-makers/dessert-makers.js';
+import sdGoals from './goals/goals.js';
 
 class StrollerController {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, sdLayoutService) {
         'ngInject';
         $reactive(this).attach($scope);
+
         this.helpers({
             stroller() {
                 return Meteor.user();
+            },
+            uiCfg() {
+                return sdLayoutService.getUICfg();
             }
         });
     }
@@ -31,6 +37,8 @@ export default angular.module('stroller-dessert.stroller', [
     .component('sdStrollerDashboard', sdStrollerDashboard)
     // stroller components
     .component('sdDailyProgress', sdDailyProgress)
+    .component('sdDessertMakers', sdDessertMakers)
+    .component('sdGoals', sdGoals)
     .config(routerCfg);
 
 function routerCfg($stateProvider) {

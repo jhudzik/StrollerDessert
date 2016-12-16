@@ -4,14 +4,15 @@ import uiRouter from 'angular-ui-router';
 import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 
+import { DessertMakers } from '../../../collections/dessert-makers';
 import template from './signup.html'
 
 class SignupController {
     constructor($scope, $reactive, $state) {
         'ngInject';
         $reactive(this).attach($scope);
-        this.$state = $state;
 
+        this.$state = $state;
         this.credentials = {
             username: '',
             password: '',
@@ -44,8 +45,17 @@ class SignupController {
             opts = angular.extend(this.credentials, {profile});
         Accounts.createUser(opts, (err) => {
             if(angular.isUndefined(err)) {
-                let redirectState = this.isDessertMaker ?
-                    'sd.dessert-maker' : 'sd.stroller';
+                let redirectState;
+                // let redirectState = this.isDessertMaker ?
+                //     'sd.dessert-maker' : 'sd.stroller';
+                // this.$state.go(redirectState, {id: Meteor.userId()});
+                if(this.isDessertMaker) {
+                    redirectState = 'sd.dessert-maker';
+                    // update dessert-makers collection
+                    // DessertMakers.collection.insert({})
+                } else {
+                    redirectState = 'sd.stroller';
+                }
                 this.$state.go(redirectState, {id: Meteor.userId()});
             } else {
                 this.err = err;
