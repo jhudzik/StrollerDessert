@@ -3,7 +3,10 @@
     profile.  */
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import { Accounts } from 'meteor/accounts-base'; //
+import { Accounts } from 'meteor/accounts-base';
+
+// demo only : will help generate profile data
+import {generateInt, generateDesserts} from './data';
 
 import template from './signup.html';
 
@@ -28,10 +31,23 @@ class SignupController {
             // add type and space for saving ui related data to profile
             profile = {type, ui: {}},
             opts = _.extend(this.credentials, {profile});
+        // Demo Only: we'll generate some data for dessert maker profiles
+        if(type === 'stroller') {
+            _.extend(opts.profile, {steps: generateInt(250)});
+        } else {
+            _.extend(opts.profile, {
+                deliveries: generateInt(45, 1),
+                desserts: generateDesserts()
+            });
+        } // \Demo Only
         Accounts.createUser(opts, (err) => {
-            var goState = this.isDessertMaker ? 'sd.dessert-maker' :
-                'sd.stroller';
-            this.$state.go(goState, {id: Meteor.userId()});
+            if(angular.isUndefined(err)) {
+                let goState = type === 'dessert-maker' ? 'sd.dessert-maker' :
+                    'sd.stroller';
+                this.$state.go(goState, {id: Meteor.userId()});
+            } else {
+                this.err = err;
+            }
         });
     }
 }

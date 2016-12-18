@@ -7,3 +7,14 @@ body {
     background-color: #353535;
     color: #eee;
 }
+
+.delivery-count {
+    font-size: 155%;
+    font-weight: bolder;
+    padding: 5px;
+    text-decoration: underline;
+}
+
+.md-subheader {
+    padding: 10px;
+}

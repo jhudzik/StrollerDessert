@@ -14,7 +14,7 @@ Meteor.methods({
         if(!this.userId) {
             throw new Error('Authorization Error');
         }
-        _extend(goal, {createdAt: new Date()});
+        _.extend(goal, {createdAt: new Date()});
         Goals.insert(goal);
     }
 });

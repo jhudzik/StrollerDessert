@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './stroller-dash.html';
+import sdDessertMakerList from '../dessert-maker-list/dessert-maker-list';
 
 var sdStrollerDash;
 
@@ -16,6 +17,16 @@ class StrollerDashController {
                 return Meteor.user();
             }
         });
+    }
+
+    createGoal(dm, dessert) {
+        // toJson will strip angular props ($$hashkey, etc..)
+        Meteor.call('goals.insert', angular.toJson({
+            dessert,
+            sId: Meteor.userId(),
+            dmId: dm._id,
+            dmName: dm.username
+        }));
     }
 }
 
@@ -32,6 +43,7 @@ export default
             uiRouter
         ])
         .component('sdStrollerDash', sdStrollerDash)
+        .component('sdDessertMakerList', sdDessertMakerList)
         .config(routerCfg);
 
 function routerCfg($stateProvider) {
