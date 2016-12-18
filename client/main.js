@@ -8,4 +8,14 @@ angular
         angularMaterial,
         angularMeteor,
         uiRouter
-    ]);
+    ])
+    .config(routerCfg);
+
+function routerCfg($stateProvider, $urlRouterProvider) {
+    'ngInject';
+    // root state
+    $stateProvider
+        .state('sd', {url: '/'});
+    // reroute unmatched urls to /
+    $urlRouterProvider.otherwise('/');
+}
