@@ -4,8 +4,6 @@ import uiRouter from 'angular-ui-router';
 
 import template from './dessert-maker-dash.html';
 
-console.log(template);
-
 var sdDessertDash;
 
 class DessertMakerDashController {
@@ -15,7 +13,7 @@ class DessertMakerDashController {
 
         this.helpers({
             dessertMaker() {
-                return Meteor.user()
+                return Meteor.user();
             }
         });
     }
