@@ -33,7 +33,7 @@ class SignupController {
             opts = _.extend(this.credentials, {profile});
         // Demo Only: we'll generate some data for dessert maker profiles
         if(type === 'stroller') {
-            _.extend(opts.profile, {steps: generateInt(250)});
+            _.extend(opts.profile, {steps: generateInt(150)});
         } else {
             _.extend(opts.profile, {
                 deliveries: generateInt(45, 1),

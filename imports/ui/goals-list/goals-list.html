@@ -1,0 +1,22 @@
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            Stroller Goals
+        </div>
+    </md-toolbar>
+    <div layout layout-padding layout-wrap>
+        <md-card ng-repeat="g in $ctrl.goals">
+            <md-card-title-text>
+                <span class="md-headline">
+                    {{g.dessert.type}}
+                </span>
+                <span class="md-subheader">
+                    from Dessert Maker {{g.dmName}} @ {{g.dessert.steps}}
+                </span>
+                <md-icon ng-if="g.dessert.steps <= $ctrl.steps">
+                    check
+                </md-icon>
+            </md-card-title-text>
+        </md-card>
+    </div>
+</md-content>

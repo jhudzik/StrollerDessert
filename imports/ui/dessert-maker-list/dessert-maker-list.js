@@ -11,7 +11,7 @@ class DessertMakerListController {
         'ngInject';
         $reactive(this).attach($scope);
 
-        // this.subscribe('dessertMakers');
+        this.subscribe('dessertMakers');
         this.helpers({
             list() {
                 // this will only return dessertMaker profile information

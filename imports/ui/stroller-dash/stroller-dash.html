@@ -6,8 +6,15 @@
     </md-toolbar-tools>
     <div layout layout-padding layout-wrap>
         {{$ctrl.stroller}}
-        <sd-dessert-maker-list
-            create-goal="$ctrl.createGoal(dm, dessert)">
-        </sd-dessert-maker-list>
+        <div>
+            <sd-dessert-maker-list
+                create-goal="$ctrl.createGoal(dm, dessert)">
+            </sd-dessert-maker-list>
+        </div>
+        <div flex="100">
+            <sd-goals-list steps="$ctrl.stroller.profile.steps"
+                goals="$ctrl.goals">
+            </sd-goals-list>
+        </div>
     </div>
 </md-content>

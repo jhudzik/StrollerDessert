@@ -2,8 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
+import { Goals } from '../../api/goals';
+
 import template from './stroller-dash.html';
 import sdDessertMakerList from '../dessert-maker-list/dessert-maker-list';
+import sdGoalsList from '../goals-list/goals-list';
 
 var sdStrollerDash;
 
@@ -12,7 +15,11 @@ class StrollerDashController {
         'ngInject';
         $reactive(this).attach($scope);
 
+        this.subscribe('goals');
         this.helpers({
+            goals() {
+                return Goals.find({sId: Meteor.userId()});
+            },
             stroller() {
                 return Meteor.user();
             }
@@ -21,12 +28,13 @@ class StrollerDashController {
 
     createGoal(dm, dessert) {
         // toJson will strip angular props ($$hashkey, etc..)
-        Meteor.call('goals.insert', angular.toJson({
+        var goal = angular.fromJson(angular.toJson({
             dessert,
             sId: Meteor.userId(),
             dmId: dm._id,
             dmName: dm.username
         }));
+        Meteor.call('goals.insert', goal);
     }
 }
 
@@ -44,6 +52,7 @@ export default
         ])
         .component('sdStrollerDash', sdStrollerDash)
         .component('sdDessertMakerList', sdDessertMakerList)
+        .component('sdGoalsList', sdGoalsList)
         .config(routerCfg);
 
 function routerCfg($stateProvider) {
