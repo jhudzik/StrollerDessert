@@ -30,7 +30,7 @@ class SignupController {
             opts = _.extend(this.credentials, {profile});
         Accounts.createUser(opts, (err) => {
             var goState = this.isDessertMaker ? 'sd.dessert-maker' :
-                'sd-stroller';
+                'sd.stroller';
             this.$state.go(goState, {id: Meteor.userId()});
         });
     }
