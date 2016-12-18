@@ -7,6 +7,8 @@ import '../imports/ui/signup/signup';
 import '../imports/ui/stroller-dash/stroller-dash';
 import '../imports/ui/dessert-maker-dash/dessert-maker-dash';
 
+import template from './intro.html';
+
 angular
     .module('stroller-dessert', [
         angularMaterial,
@@ -22,7 +24,10 @@ function routerCfg($stateProvider, $urlRouterProvider) {
     'ngInject';
     // root state
     $stateProvider
-        .state('sd', {url: '/'});
+        .state('sd', {
+            url: '/',
+            template
+        });
     // reroute unmatched urls to /
     $urlRouterProvider.otherwise('/');
 }
