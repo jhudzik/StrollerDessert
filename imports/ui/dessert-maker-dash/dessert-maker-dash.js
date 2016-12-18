@@ -4,6 +4,8 @@ import uiRouter from 'angular-ui-router';
 
 import template from './dessert-maker-dash.html';
 
+import sdDeliveries from '../deliveries/deliveries';
+
 var sdDessertDash;
 
 class DessertMakerDashController {
@@ -11,6 +13,17 @@ class DessertMakerDashController {
         'ngInject';
         $reactive(this).attach($scope);
 
+        this.autorun(() => {
+            this.call('goals.deliveryCount', null, (err, res) => {
+                /*  Since we generated some mock data during signup,
+                    we update the count accordingly. This is a Demo Only
+                    procedure. In real life, we'd update the dessert maker
+                    profile accordingly.  */
+                this.deliveryCount = res + this.dessertMaker.profile.deliveries;
+            })
+        });
+
+        this.subscribe('goals');
         this.helpers({
             dessertMaker() {
                 return Meteor.user();
@@ -31,6 +44,7 @@ export default
             uiRouter
         ])
         .component('sdDessertMakerDash', sdDessertMakerDash)
+        .component('sdDeliveries', sdDeliveries)
         .config(routerCfg);
 
 function routerCfg($stateProvider) {

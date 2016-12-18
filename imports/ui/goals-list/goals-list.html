@@ -9,12 +9,13 @@
             <md-card-title-text>
                 <span class="md-headline">
                     {{g.dessert.type}}
-                    <md-icon ng-if="g.dessert.steps <= $ctrl.steps">
+                    <md-icon ng-show="g.complete">
                         check
                     </md-icon>
                 </span>
                 <span class="md-subheader">
-                    from Dessert Maker {{g.dmName}} @ {{g.dessert.steps}}
+                    From <span class="standout-text">{{g.dmName}}</span>
+                    @ {{g.dessert.steps}} Steps
                 </span>
             </md-card-title-text>
         </md-card>

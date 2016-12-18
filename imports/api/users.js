@@ -3,6 +3,6 @@ import { Mongo } from 'meteor/mongo';
 
 Meteor.publish('dessertMakers', () => {
     return Meteor.users.find({'profile.type': 'dessert-maker'}, {
-        fields: {profile: 1}
+        fields: {profile: 1, username: 1}
     });
 });

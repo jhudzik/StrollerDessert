@@ -35,7 +35,11 @@ class StrollerDashController {
             dmId: dm._id,
             dmName: dm.username
         }));
-        Meteor.call('goals.insert', goal);
+        this.call('goals.insert', goal);
+    }
+
+    onGoalComplete(goal) {
+        this.call('goals.setAsComplete', goal);
     }
 }
 
