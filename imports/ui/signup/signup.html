@@ -1,0 +1,29 @@
+<md-content>
+    <md-subheader>Stroller Dessert Signup</md-subheader>
+    <div layout layout-padding>
+        <form name="$ctrl.signupForm" ng-submit="$ctrl.signup()" flex
+            layout layout-wrap>
+            <md-input-container flex="none">
+                <label>Username</label>
+                <input ng-model="$ctrl.credentials.username" required/>
+            </md-input-container>
+            <md-input-container flex="none" flex-offset="5">
+                <label>Password</label>
+                <input ng-model="$ctrl.credentials.password" required/>
+            </md-input-container>
+            <md-input-container flex="none" flex-offset="5">
+                <md-checkbox>
+                    Dessert Maker?
+                </md-checkbox>
+            </md-input-container>
+            <md-input-container flex-offset="5">
+                <md-button type="submit" ng-disabled="$ctrl.signupForm.$invalid">
+                    Signup
+                </md-button>
+            </md-input-container>
+        </form>
+        <div ng-show="$ctrl.err">
+            {{$ctrl.err}}
+        </div>
+    </div>
+</md-content>
