@@ -10,10 +10,13 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-    'goals.deliveryCount'() {
+    'goals.deliveries'() {
+        if(!this.userId) {
+            throw new Error('Authorization Error');
+        }
         return Goals.find({
             $and: [{dmId: this.userId}, {complete: true}]
-        }).count();
+        }).fetch();
     },
     'goals.insert'(goal) {
         if(!this.userId) {
