@@ -5,6 +5,7 @@ import uiRouter from 'angular-ui-router';
 
 import '../imports/ui/signup/signup';
 import '../imports/ui/stroller-dash/stroller-dash';
+import '../imports/ui/dessert-maker-dash/dessert-maker-dash';
 
 angular
     .module('stroller-dessert', [
@@ -12,7 +13,8 @@ angular
         angularMeteor,
         uiRouter,
         'stroller-dessert.signup',
-        'stroller-dessert.stroller-dash'
+        'stroller-dessert.stroller-dash',
+        'stroller-dessert.dessert-maker-dash'
     ])
     .config(routerCfg);
 

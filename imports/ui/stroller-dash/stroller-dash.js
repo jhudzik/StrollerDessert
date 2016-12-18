@@ -39,7 +39,9 @@ function routerCfg($stateProvider) {
         .state('sd.stroller', {
             url: 'stroller/:id',
             views: {
-                '@': {template: '<sd-stroller-dash></sd-stroller-dash>'}
+                '@': {
+                    template: '<sd-stroller-dash></sd-stroller-dash>'
+                }
             }
         });
 }
