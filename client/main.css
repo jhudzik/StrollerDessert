@@ -15,6 +15,15 @@ body {
     text-decoration: underline;
 }
 
+.md-headline md-icon {
+    margin-left: 5px;
+    vertical-align: text-top;
+}
+
 .md-subheader {
     padding: 10px;
+}
+
+.standout-text {
+    font-size: 150%;
 }

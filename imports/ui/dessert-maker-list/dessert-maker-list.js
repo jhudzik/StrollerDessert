@@ -15,7 +15,7 @@ class DessertMakerListController {
         this.helpers({
             list() {
                 // this will only return dessertMaker profile information
-                return Meteor.users.find();
+                return Meteor.users.find({_id: {$ne: Meteor.userId()}});
             }
         });
     }

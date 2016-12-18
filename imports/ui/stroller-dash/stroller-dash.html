@@ -5,16 +5,19 @@
         </div>
     </md-toolbar-tools>
     <div layout layout-padding layout-wrap>
-        {{$ctrl.stroller}}
+        <div flex="40">
+            <sd-daily-progress steps="$ctrl.stroller.profile.steps">
+            </sd-daily-progress>
+        </div>
+        <div>
+            <sd-goals-list steps="$ctrl.stroller.profile.steps"
+                goals="$ctrl.goals">
+            </sd-goals-list>
+        </div>
         <div>
             <sd-dessert-maker-list
                 create-goal="$ctrl.createGoal(dm, dessert)">
             </sd-dessert-maker-list>
-        </div>
-        <div flex="100">
-            <sd-goals-list steps="$ctrl.stroller.profile.steps"
-                goals="$ctrl.goals">
-            </sd-goals-list>
         </div>
     </div>
 </md-content>

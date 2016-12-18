@@ -7,6 +7,7 @@ import { Goals } from '../../api/goals';
 import template from './stroller-dash.html';
 import sdDessertMakerList from '../dessert-maker-list/dessert-maker-list';
 import sdGoalsList from '../goals-list/goals-list';
+import sdDailyProgress from '../daily-progress/daily-progress';
 
 var sdStrollerDash;
 
@@ -53,6 +54,7 @@ export default
         .component('sdStrollerDash', sdStrollerDash)
         .component('sdDessertMakerList', sdDessertMakerList)
         .component('sdGoalsList', sdGoalsList)
+        .component('sdDailyProgress', sdDailyProgress)
         .config(routerCfg);
 
 function routerCfg($stateProvider) {
