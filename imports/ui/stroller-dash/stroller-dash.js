@@ -3,7 +3,6 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './stroller-dash.html';
-console.log(template);
 
 var sdStrollerDash;
 
