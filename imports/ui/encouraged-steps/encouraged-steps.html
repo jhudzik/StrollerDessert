@@ -1,9 +1,12 @@
-<md-content>
+<md-content class="dash-component">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            You have encourage &nbsp;
+            You have encouraged &nbsp;
             <span class="standout-text"> {{$ctrl.total}} </span>
             &nbsp;steps!
+            <div class="controls">
+                <sd-hide component-id="encouraged-steps"></sd-hide>
+            </div>
         </div>
     </md-toolbar>
 </md-content>

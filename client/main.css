@@ -3,6 +3,20 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+md-content {
+    position: relative;
+}
+
+.controls {
+    background-color: rgba(0, 0, 0, 0.65);
+    bottom: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity ease-in 0.15s;
+}
+
 .dash-header {
     background-color: #353535;
     color: #eee;
@@ -13,6 +27,12 @@ body {
     font-weight: bolder;
     padding: 5px;
     text-decoration: underline;
+}
+
+.dash-component:hover .controls {
+    opacity: 1;
+    transition: opacity ease-in 0.15s;
+    transition-delay: 0.5s;
 }
 
 .md-headline md-icon {

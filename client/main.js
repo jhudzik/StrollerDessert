@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 import angularMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
+import '../imports/ui/utils/utils';
 import '../imports/ui/signup/signup';
 import '../imports/ui/stroller-dash/stroller-dash';
 import '../imports/ui/dessert-maker-dash/dessert-maker-dash';
@@ -14,6 +15,7 @@ angular
         angularMaterial,
         angularMeteor,
         uiRouter,
+        'stroller-dessert.utils',
         'stroller-dessert.signup',
         'stroller-dessert.stroller-dash',
         'stroller-dessert.dessert-maker-dash'

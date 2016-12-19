@@ -1,21 +1,32 @@
 <md-content>
-    <md-toolbar-tools>
-        <div class="md-toolbar-tools dash-header">
-            Welcome to the Stroller Dashboard {{$ctrl.stroller.username}}!
+    <md-toolbar>
+        <div class="md-toolbar-tools dash-header" layout flex>
+            <div flex>
+                Welcome to the Stroller Dashboard {{$ctrl.stroller.username}}!
+            </div>
+            <div layout layout-align="end center" flex>
+                <sd-show ng-repeat="c in $ctrl.uiCfg | toArray | filter: {hidden: true}"
+                    component-id="{{c._key}}">
+                </sd-shiw>
+            </div>
         </div>
-    </md-toolbar-tools>
+    </md-toolbar>
     <div layout layout-padding layout-wrap>
-        <div flex="40">
-            <sd-daily-progress steps="$ctrl.stroller.profile.steps">
-            </sd-daily-progress>
+        <div layout="column" flex>
+            <div flex="40" ng-hide="$ctrl.uiCfg['daily-progress'].hidden"
+                style="margin-bottom: 20px;">
+                <sd-daily-progress steps="$ctrl.stroller.profile.steps">
+                </sd-daily-progress id="daily-progress">
+            </div>
+            <div ng-hide="$ctrl.uiCfg['goals-list'].hidden">
+                <sd-goals-list steps="$ctrl.stroller.profile.steps"
+                    goals="$ctrl.goals" on-complete="$ctrl.onGoalComplete(goal)"
+                    id="goals-list">
+                </sd-goals-list>
+            </div>
         </div>
-        <div>
-            <sd-goals-list steps="$ctrl.stroller.profile.steps"
-                goals="$ctrl.goals" on-complete="$ctrl.onGoalComplete(goal)">
-            </sd-goals-list>
-        </div>
-        <div>
-            <sd-dessert-maker-list
+        <div ng-hide="$ctrl.uiCfg['dessert-maker-list'].hidden">
+            <sd-dessert-maker-list id="dessert-maker-list"
                 create-goal="$ctrl.createGoal(dm, dessert)">
             </sd-dessert-maker-list>
         </div>

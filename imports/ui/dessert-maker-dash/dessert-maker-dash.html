@@ -1,15 +1,25 @@
 <md-content>
     <md-toolbar>
-        <div class="md-toolbar-tools dash-header">
-            Welcome to the Dessert Maker Dashboard {{$ctrl.dessertMaker.username}}
+        <div class="md-toolbar-tools dash-header" layout flex>
+            <div flex>
+                Welcome to the Dessert Maker Dashboard {{$ctrl.dessertMaker.username}}
+            </div>
+            <div layout layout-align="end center" flex>
+                <sd-show ng-repeat="c in $ctrl.uiCfg | toArray | filter: {hidden: true}"
+                    component-id="{{c._key}}" flex="none" flex-offset="5">
+                </sd-show>
+            </div>
         </div>
     </md-toolbar>
+    {{$ctrl}}
     <div layout layout-padding layout-wrap>
-        <div>
-            <sd-deliveries total="$ctrl.strollerCount"></sd-deliveries>
+        <div ng-hide="$ctrl.uiCfg.deliveries.hidden">
+            <sd-deliveries total="$ctrl.strollerCount"
+                id="deliveries"></sd-deliveries>
         </div>
-        <div>
-            <sd-encouraged-steps total="$ctrl.stepCount"></sd-encouraged-steps>
+        <div ng-hide="$ctrl.uiCfg['encouraged-steps'].hidden">
+            <sd-encouraged-steps total="$ctrl.stepCount"
+                id="encouraged-steps"></sd-encouraged-steps>
         </div>
     </div>
 </md-content>

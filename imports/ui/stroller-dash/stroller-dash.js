@@ -12,17 +12,21 @@ import sdDailyProgress from '../daily-progress/daily-progress';
 var sdStrollerDash;
 
 class StrollerDashController {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, sdLayoutService) {
         'ngInject';
         $reactive(this).attach($scope);
 
         this.subscribe('goals');
+        this.sdLayoutService = sdLayoutService;
         this.helpers({
             goals() {
                 return Goals.find({sId: Meteor.userId()});
             },
             stroller() {
                 return Meteor.user();
+            },
+            uiCfg() {
+                return sdLayoutService.getUiCfg();
             }
         });
     }

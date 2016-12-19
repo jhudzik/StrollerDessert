@@ -10,10 +10,11 @@ import sdEncouragedSteps from '../encouraged-steps/encouraged-steps';
 var sdDessertDash;
 
 class DessertMakerDashController {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, sdLayoutService) {
         'ngInject';
         $reactive(this).attach($scope);
 
+        this.sdLayoutService = sdLayoutService;
         this.autorun(() => {
             this.call('goals.deliveries', null, (err, res) => {
                 this.stepCount = res.reduce((a,b) => {
@@ -31,6 +32,9 @@ class DessertMakerDashController {
         this.helpers({
             dessertMaker() {
                 return Meteor.user();
+            },
+            uiCfg() {
+                return sdLayoutService.getUiCfg()
             }
         });
     }
