@@ -13,11 +13,13 @@
     </md-toolbar>
     {{$ctrl}}
     <div layout layout-padding layout-wrap>
-        <div ng-hide="$ctrl.uiCfg.deliveries.hidden">
+        <div ng-hide="$ctrl.uiCfg.deliveries.hidden"
+            flex="{{$ctrl.uiCfg.deliveries.flexSize}}">
             <sd-deliveries total="$ctrl.strollerCount"
                 id="deliveries"></sd-deliveries>
         </div>
-        <div ng-hide="$ctrl.uiCfg['encouraged-steps'].hidden">
+        <div ng-hide="$ctrl.uiCfg['encouraged-steps'].hidden"
+            flex="{{$ctrl.uiCfg['encouraged-steps'].flexSize}}">
             <sd-encouraged-steps total="$ctrl.stepCount"
                 id="encouraged-steps"></sd-encouraged-steps>
         </div>

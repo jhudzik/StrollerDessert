@@ -11,7 +11,6 @@
             </div>
         </div>
     </md-toolbar>
-    {{$ctrl.stroller}}
     <div layout layout-padding layout-wrap>
         <div layout="column" flex>
             <div ng-hide="$ctrl.uiCfg['daily-progress'].hidden"
@@ -21,16 +20,17 @@
                     </sd-daily-progress id="daily-progress">
                 </div>
             </div>
-            <div ng-hide="$ctrl.uiCfg['goals-list'].hidden"
-                flex="{{$ctrl.uiCfg['goals-list'].flexSize}}">
-                <sd-goals-list steps="$ctrl.stroller.profile.steps"
-                    goals="$ctrl.goals" on-complete="$ctrl.onGoalComplete(goal)"
-                    id="goals-list">
-                </sd-goals-list>
+            <div ng-hide="$ctrl.uiCfg['goals-list'].hidden" layout>
+                <div flex="{{$ctrl.uiCfg['goals-list'].flexSize}}">
+                    <sd-goals-list steps="$ctrl.stroller.profile.steps"
+                        goals="$ctrl.goals" on-complete="$ctrl.onGoalComplete(goal)"
+                        id="goals-list">
+                    </sd-goals-list>
+                </div>
             </div>
         </div>
         <div ng-hide="$ctrl.uiCfg['dessert-maker-list'].hidden"
-            flex="{{$ctrl.uiCfg['desser-maker-list'].flexSize}}">
+            flex="{{$ctrl.uiCfg['dessert-maker-list'].flexSize}}">
             <sd-dessert-maker-list id="dessert-maker-list"
                 create-goal="$ctrl.createGoal(dm, dessert)">
             </sd-dessert-maker-list>

@@ -13,9 +13,9 @@ export class SdLayoutService {
                 var flexSize,
                     uiProfile = res.profile.ui;
                 if(angular.isDefined(uiProfile[componentId])) {
-                    flexSize = uiProfile[componentId].flexSize || '60';
+                    flexSize = uiProfile[componentId].flexSize || '';
                 } else {
-                    flexSize = '60';
+                    flexSize = '';
                 }
                 return {flexSize};
             }

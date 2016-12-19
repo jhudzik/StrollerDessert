@@ -1,6 +1,7 @@
 import template from './resize.html';
 
 var sdResize;
+const DEFAULT_MIN_FLEX='45';
 
 class ResizeController {
     constructor($scope, $reactive, sdLayoutService) {
@@ -10,9 +11,9 @@ class ResizeController {
         this.autorun(() => {
             this.getReactively('size');
             if(angular.isDefined(this.size)) {
-                this.isSmall = this.size.flexSize === '60';
+                this.isSmall = this.size.flexSize === this.minFlex ||
+                    this.size.flexSize === DEFAULT_MIN_FLEX;
             }
-            console.log(this.isSmall);
         });
 
         this.sdLayoutService = sdLayoutService;
@@ -23,13 +24,17 @@ class ResizeController {
         });
     }
 
-    setSize(size) {
+    setSize(size=DEFAULT_MIN_FLEX) {
         this.sdLayoutService.setSize(this.componentId, size);
     }
 }
 
+// <sd-resize> definition
 sdResize = {
-    bindings: {componentId: '@'},
+    bindings: {
+        componentId: '@',
+        minFlex: '@'
+    },
     controller: ResizeController,
     template
 }
