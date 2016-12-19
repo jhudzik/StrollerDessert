@@ -12,15 +12,14 @@ export class SdLayoutService {
             transform(res) {
                 var flexSize,
                     uiProfile = res.profile.ui;
-                if(angular.isDefined(uiProfile) &&
-                    angular.isDefined(uiProfile[componentId])) {
-                    flexSize = uiProfile[componentId].flexSize || '50';
+                if(angular.isDefined(uiProfile[componentId])) {
+                    flexSize = uiProfile[componentId].flexSize || '60';
                 } else {
-                    flexSize = '50';
+                    flexSize = '60';
                 }
                 return {flexSize};
             }
-        });
+        })
     }
 
     getUiCfg() {

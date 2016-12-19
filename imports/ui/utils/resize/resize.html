@@ -1,0 +1,11 @@
+<div>
+    <!-- setSize '' is flex: auto -->
+    <md-button class="md-icon-button" ng-click="$ctrl.setSize('')"
+        ng-show="$ctrl.isSmall">
+        <md-icon>call_made</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-click="$ctrl.setSize('60')"
+        ng-hide="$ctrl.isSmall">
+        <md-icon>call_received</md-icon>
+    </md-button>
+</div>

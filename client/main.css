@@ -9,12 +9,16 @@ md-content {
 
 .controls {
     background-color: rgba(0, 0, 0, 0.65);
-    bottom: 0;
+    /*bottom: 0;*/
     opacity: 0;
     position: absolute;
     right: 0;
     top: 0;
     transition: opacity ease-in 0.15s;
+}
+
+.controls sd-hide {
+    border-right: 1px solid #68aae2;
 }
 
 .dash-header {
@@ -42,6 +46,14 @@ md-content {
 
 .md-subheader {
     padding: 10px;
+}
+
+.md-toolbar-tools {
+    /*font-size: 110%;*/
+}
+
+.md-toolbar-tools:not(.dash-header) {
+    /*min-height: 85px;*/
 }
 
 .standout-text {
