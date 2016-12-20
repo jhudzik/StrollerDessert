@@ -1,8 +1,9 @@
 <md-content>
     <md-toolbar>
         <div class="md-toolbar-tools dash-header" layout flex>
-            <div flex>
-                Welcome to the Stroller Dashboard {{$ctrl.stroller.username}}!
+            <div flex layout>
+                <h3>Welcome to the Stroller Dashboard {{$ctrl.stroller.username}}!</h3>
+                <span id="total-steps">{{$ctrl.stroller.profile.totalSteps}} Total Steps</span>
             </div>
             <div layout layout-align="end center" flex>
                 <sd-show ng-repeat="c in $ctrl.uiCfg | toArray | filter: {hidden: true}"
@@ -22,7 +23,7 @@
             </div>
             <div ng-hide="$ctrl.uiCfg['goals-list'].hidden" layout>
                 <div flex="{{$ctrl.uiCfg['goals-list'].flexSize}}">
-                    <sd-goals-list steps="$ctrl.stroller.profile.steps"
+                    <sd-goals-list steps="$ctrl.stroller.profile.totalSteps "
                         goals="$ctrl.goals" on-complete="$ctrl.onGoalComplete(goal)"
                         id="goals-list">
                     </sd-goals-list>

@@ -7,9 +7,13 @@ md-content {
     position: relative;
 }
 
+#total-steps {
+    color: #addadd;
+    margin-left: 10px;
+}
+
 .controls {
     background-color: rgba(0, 0, 0, 0.65);
-    /*bottom: 0;*/
     opacity: 0;
     position: absolute;
     right: 0;
@@ -46,14 +50,6 @@ md-content {
 
 .md-subheader {
     padding: 10px;
-}
-
-.md-toolbar-tools {
-    /*font-size: 110%;*/
-}
-
-.md-toolbar-tools:not(.dash-header) {
-    /*min-height: 85px;*/
 }
 
 .standout-text {

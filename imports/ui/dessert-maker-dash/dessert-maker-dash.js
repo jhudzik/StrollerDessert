@@ -17,9 +17,23 @@ class DessertMakerDashController {
         this.sdLayoutService = sdLayoutService;
         this.autorun(() => {
             this.call('goals.deliveries', null, (err, res) => {
-                this.stepCount = res.reduce((a,b) => {
-                    return a + b.dessert.steps;
-                }, 0);
+                /*  Count steps, but make sure we don't over count since
+                    a user can have multiple goals open with a single DM.
+                    We take the highest step count per user. */
+                var stepCount = 0,
+                    stepsToCount = {};
+                res.forEach((r) => {
+                    var steps = r.dessert.steps;
+                    if(!stepsToCount[r.sId]) {
+                        stepsToCount[r.sId] = steps;
+                    } else if(stepsToCount[r.sId] < steps) {
+                        stepsToCount[r.sId] = steps;
+                    }
+                });
+                angular.forEach(stepsToCount, (steps) => {
+                    stepCount += steps;
+                });
+                this.stepCount = stepCount;
                 /*  + 1 since we mocked out some deliveries when the dessert
                     maker was created. We'll just assume those all went to
                     the same child who hasn't been counted yet. In real life
