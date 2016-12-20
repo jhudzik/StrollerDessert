@@ -6,6 +6,14 @@ export class SdLayoutService {
         this.$stateParams = $stateParams;
     }
 
+    /**
+     *  Get flexSize of component from current user's UI Profile.
+     *  @param {String} componentId - The Id of the component whose flexSize
+     *      we need to determine. If component flexSize is undefined,
+     *      we default to '', which => `flex:1` when used with the
+     *      angular material flex directive.
+     *  @return {Object} - {flexSize}, where flexSize is a String.
+     */
     getSize(componentId) {
         var field = `profile.ui.${componentId}.flexSize`;
         return Meteor.users.findOne({_id: Meteor.userId()}, {
