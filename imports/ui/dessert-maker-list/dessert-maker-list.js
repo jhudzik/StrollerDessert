@@ -1,3 +1,5 @@
+// Component to display a list of dessert makers and their desserts.
+
 import { Meteor } from 'meteor/meteor';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
+// Service to maintain and retrieve persistent UI configurations
 export class SdLayoutService {
     constructor($stateParams) {
         'ngInject';

@@ -1,3 +1,5 @@
+// Component to display a list of goals.
+
 import template from './goals-list.html';
 
 var sdGoals;

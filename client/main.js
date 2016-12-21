@@ -20,8 +20,15 @@ angular
         'stroller-dessert.stroller-dash',
         'stroller-dessert.dessert-maker-dash'
     ])
+    .config(cfg)
     .config(routerCfg);
 
+function cfg($locationProvider) {
+    'ngInject';
+    $locationProvider.html5Mode({enabled: true});
+}
+
+// setup the root state
 function routerCfg($stateProvider, $urlRouterProvider) {
     'ngInject';
     // root state

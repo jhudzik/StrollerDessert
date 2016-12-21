@@ -1,3 +1,5 @@
+// Main Stroller Dash Component and Routing
+
 import { Meteor } from 'meteor/meteor';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';

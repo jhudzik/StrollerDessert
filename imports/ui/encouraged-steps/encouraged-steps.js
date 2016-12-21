@@ -1,3 +1,5 @@
+// Component to display encourage steps.
+
 import template from './encouraged-steps.html';
 
 var sdEncouragedSteps = {

@@ -1,5 +1,5 @@
 /*  Triggers visibility configuration writes to a user profile. The componentId
-    binding should match the `id` of the component that is to be hidden.
+    binding should match the `id` attribute of the component that is to be hidden.
     Up to the user on how to implement the actual method to hide the component.
     In our case we wrap the component in a container with `ng-hide`.  */
 import template from './hide.html';

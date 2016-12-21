@@ -1,5 +1,3 @@
-/*  Goal documents contain a reference to a dessert maker, a stroller,
-    a dessert, and the steps required to fulfil the goal.  */
 import { Meteor } from 'meteor/meteor';
 export const Goals = new Mongo.Collection('goals');
 

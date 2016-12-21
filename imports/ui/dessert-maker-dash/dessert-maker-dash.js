@@ -1,10 +1,12 @@
+// Main Dessert Maker Dash Component and Routing
+
 import { Meteor } from 'meteor/meteor';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './dessert-maker-dash.html';
 
-import sdDeliveries from '../deliveries/deliveries';
+import sdHappyStrollersCount from '../happy-strollers-count/happy-strollers-count';
 import sdEncouragedSteps from '../encouraged-steps/encouraged-steps';
 import sdWhoWhere from '../who-where/who-where';
 
@@ -55,7 +57,7 @@ export default
             uiRouter
         ])
         .component('sdDessertMakerDash', sdDessertMakerDash)
-        .component('sdDeliveries', sdDeliveries)
+        .component('sdHappyStrollersCount', sdHappyStrollersCount)
         .component('sdEncouragedSteps', sdEncouragedSteps)
         .component('sdWhoWhere', sdWhoWhere)
         .config(routerCfg);
