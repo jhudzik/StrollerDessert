@@ -6,7 +6,7 @@ import uiRouter from 'angular-ui-router';
 import { Accounts } from 'meteor/accounts-base';
 
 // demo only : will help generate profile data
-import {generateInt, generateDesserts} from './data';
+import {generateInt, generateDesserts, getAddress} from './data';
 
 import template from './signup.html';
 
@@ -29,7 +29,7 @@ class SignupController {
     signup() {
         var type = this.isDessertMaker ? 'dessert-maker' : 'stroller',
             // add type and space for saving ui related data to profile
-            profile = {type, ui: {}},
+            profile = {type, ui: {}, address: getAddress()},
             opts = _.extend(this.credentials, {profile});
         // Demo Only: we'll generate some data for dessert maker profiles
         if(type === 'stroller') {

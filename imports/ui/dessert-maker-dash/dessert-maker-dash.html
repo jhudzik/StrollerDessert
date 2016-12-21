@@ -11,7 +11,6 @@
             </div>
         </div>
     </md-toolbar>
-    {{$ctrl}}
     <div layout layout-padding layout-wrap>
         <div ng-hide="$ctrl.uiCfg.deliveries.hidden"
             flex="{{$ctrl.uiCfg.deliveries.flexSize}}">
@@ -22,6 +21,12 @@
             flex="{{$ctrl.uiCfg['encouraged-steps'].flexSize}}">
             <sd-encouraged-steps total="$ctrl.stepCount"
                 id="encouraged-steps"></sd-encouraged-steps>
+        </div>
+        <div flex="100" layout>
+            <div ng-hide="$ctrl.uiCfg['who-where'].hidden"
+                flex="{{$ctrl.uiCfg['who-where'].flexSize}}">
+                <sd-who-where deliveries="$ctrl.deliveries"></sd-who-where>
+            </div>
         </div>
     </div>
 </md-content>

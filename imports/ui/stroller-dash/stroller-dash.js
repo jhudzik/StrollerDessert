@@ -35,7 +35,9 @@ class StrollerDashController {
         // toJson will strip angular props ($$hashkey, etc..)
         var goal = angular.fromJson(angular.toJson({
             dessert,
-            sId: Meteor.userId(),
+            sId: this.stroller._id,
+            sName: this.stroller.username,
+            sAddress: this.stroller.profile.address,
             dmId: dm._id,
             dmName: dm.username
         }));

@@ -8,6 +8,13 @@ const DESSERTS = [
     {type: 'Pumpkin Pie', steps: 75}
 ];
 
+const ADDRESSES = [
+    '15 S.21st St., Philadelphia, PA',
+    '2 Somerset Ln., Nantucket, MA',
+    '873 North Union St. Burlington, VT',
+    '32 Orange Dr., Altamonte Springs, FL'
+];
+
 function generateInt(max, min=0) {
     return Math.floor(min + Math.random() * (max - min));
 }
@@ -24,4 +31,8 @@ function generateDesserts() {
     return desserts;
 }
 
-export { generateInt, generateDesserts };
+function getAddress() {
+    return ADDRESSES[generateInt(4)];
+}
+
+export { generateInt, generateDesserts, getAddress};

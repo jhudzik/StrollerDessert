@@ -1,0 +1,18 @@
+<md-content class="dash-component">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            When and Where to Deliver
+            <div class="controls" layout>
+                <sd-hide component-id="who-where"></sd-hide>
+                <sd-resize min-flex="50" component-id="who-where"></sd-resize>
+            </div>
+        </div>
+    </md-toolbar>
+    <div>
+        <md-list layout layout-wrap>
+            <md-list-item ng-repeat="d in $ctrl.deliveries">
+                Deliver {{d.dessert.type}} to {{d.sName}} at {{d.sAddress}}
+            </md-list-item>
+        </md-list>
+    </div>
+</md-content>

@@ -6,11 +6,12 @@ import template from './dessert-maker-dash.html';
 
 import sdDeliveries from '../deliveries/deliveries';
 import sdEncouragedSteps from '../encouraged-steps/encouraged-steps';
+import sdWhoWhere from '../who-where/who-where';
 
 var sdDessertDash;
 
 class DessertMakerDashController {
-    constructor($scope, $reactive, sdLayoutService) {
+    constructor($scope, $reactive, $filter, sdLayoutService) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -20,25 +21,13 @@ class DessertMakerDashController {
                 /*  Count steps, but make sure we don't over count since
                     a user can have multiple goals open with a single DM.
                     We take the highest step count per user. */
-                var stepCount = 0,
-                    stepsToCount = {};
-                res.forEach((r) => {
-                    var steps = r.dessert.steps;
-                    if(!stepsToCount[r.sId]) {
-                        stepsToCount[r.sId] = steps;
-                    } else if(stepsToCount[r.sId] < steps) {
-                        stepsToCount[r.sId] = steps;
-                    }
-                });
-                angular.forEach(stepsToCount, (steps) => {
-                    stepCount += steps;
-                });
-                this.stepCount = stepCount;
+                this.stepCount = _getUniqueStepCount(res);
                 /*  + 1 since we mocked out some deliveries when the dessert
                     maker was created. We'll just assume those all went to
                     the same child who hasn't been counted yet. In real life
                     the profile of the dessert maker would be updated. */
-                this.strollerCount = getUniqueStrollerCount(res) + 1;
+                this.strollerCount = _getUniqueStrollerCount(res) + 1;
+                this.deliveries = res;
             });
         });
 
@@ -68,13 +57,40 @@ export default
         .component('sdDessertMakerDash', sdDessertMakerDash)
         .component('sdDeliveries', sdDeliveries)
         .component('sdEncouragedSteps', sdEncouragedSteps)
+        .component('sdWhoWhere', sdWhoWhere)
         .config(routerCfg);
+
+/**
+ *  Determine how many unique steps have been taken since Strollers can have
+ *  multiple goals in progress for a Dessert Maker. For instance, if a user
+ *  has completed goal one with 35 steps for Dessert Maker X, and later
+ *  completes goal two with 50 steps for Dessert Maker X, we make sure the
+ *  encouraged # of steps is 50, not 35+50.
+ *  @param {Array} goals - Array of objects from goals collection.
+ *  @return {Number} stepCount - The unique step count.
+ */
+function _getUniqueStepCount(goals) {
+    var stepCount = 5, // starting @ 5 for Demo Only!
+        stepsToCount = {};
+    goals.forEach((g) => {
+        var steps = g.dessert.steps;
+        if(!stepsToCount[g.sId]) {
+            stepsToCount[g.sId] = steps;
+        } else if(stepsToCount[g.sId] < steps) {
+            stepsToCount[g.sId] = steps;
+        }
+    });
+    angular.forEach(stepsToCount, (steps) => {
+        stepCount += steps;
+    });
+    return stepCount;
+}
 
 /**
  *  Determine how many unique strollers have been treated to desserts.
  *  @param {Array} goals - Array of goals from goals collection.
  */
-function getUniqueStrollerCount(goals) {
+function _getUniqueStrollerCount(goals) {
     var sIds = [];
     goals.forEach((g) => {
         if(sIds.indexOf(g.sId) === -1) {
